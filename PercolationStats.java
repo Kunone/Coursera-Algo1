@@ -51,15 +51,15 @@ public class PercolationStats {
 		if (T == 1)
 			return Double.NaN;
 
-		return StdStats.stddev(thresholds);
+		return Math.sqrt(StdStats.stddev(thresholds));
 	}
 
 	public double confidenceLo() {
-		return mean() - (1.96 * Math.sqrt(stddev()) / Math.sqrt(T));
+		return mean() - ((1.96 * stddev()) / Math.sqrt(T));
 	}
 
 	public double confidenceHi() {
-		return mean() + (1.96 * Math.sqrt(stddev()) / Math.sqrt(T));
+		return mean() + ((1.96 * stddev()) / Math.sqrt(T));
 	}
 
 }
